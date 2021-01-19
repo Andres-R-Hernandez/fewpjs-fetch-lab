@@ -1,5 +1,13 @@
-function fetchBooks() {
+let baseURL = 'https://anapioficeandfire.com/api/books'
 
+document.addEventListener('DOMContentLoaded', function() {
+  fetchBooks()
+})
+
+function fetchBooks() {
+  return fetch(baseURL)
+    .then(resp => resp.json())
+    .then(json => renderBooks(json))
 }
 
 function renderBooks(books) {
@@ -10,7 +18,3 @@ function renderBooks(books) {
     main.appendChild(h2)
   })
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-  fetchBooks()
-})
